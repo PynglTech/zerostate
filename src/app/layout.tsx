@@ -18,6 +18,9 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Zero-Waste Enterprise",
   description: "Infrastructure for the Zero-Waste Enterprise",
+  icons: {
+    icon: "/footer-logo-icon.png",
+  },
 };
 
 export default function RootLayout({
