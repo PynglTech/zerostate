@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const Hero = () => {
   const scrollToPortfolio = () => {
@@ -14,14 +15,24 @@ const Hero = () => {
   return (
     <section
       id="hero"
-      className="relative flex min-h-screen items-center overflow-hidden bg-background pt-36"
+      className="relative flex min-h-screen items-center overflow-hidden bg-background pt-20"
     >
       {/* Background Pattern */}
-      <div className="absolute left-0 right-0 bottom-0 top-[81px] z-0">
-        <img
+      <div className="absolute left-0 right-0 bottom-0 top-[81px] z-0 overflow-hidden">
+        <motion.img
           src="/map-bg.png"
           alt="World Map Background"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-70"
+          animate={{
+            scale: [1, 1.15, 1],
+            x: [0, -30, 0],
+            y: [0, -15, 0],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
         />
       </div>
 
@@ -44,16 +55,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mt-8 max-w-xl text-lg font-light leading-relaxed text-muted-foreground md:text-xl"
+            className="mt-8 max-w-2xl text-[15px] md:text-[16px] font-normal leading-relaxed text-[#666666]"
           >
-            We build sovereign governance tools that validate software before it&apos;s built.
+            We build sovereign governance tools that validate software value before a single line of code is written. We replace speculation with engineered certainty.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-12"
+            className="mt-12 flex flex-wrap items-center gap-6"
           >
             <div className="relative inline-block group cursor-pointer">
               {/* Top Left Bracket */}
@@ -62,14 +73,21 @@ const Hero = () => {
               {/* Main Button */}
               <button
                 onClick={scrollToPortfolio}
-                className="relative z-10 block bg-foreground text-background px-12 py-4 rounded-lg font-sans text-lg font-medium tracking-wide transition-transform duration-300 group-hover:scale-[1.02]"
+                className="relative z-10 block bg-[#111111] text-white px-10 py-3.5 rounded-lg font-sans text-sm font-bold tracking-wider transition-all duration-300 hover:shadow-lg"
               >
-                View Portfolio
+                View Product
               </button>
 
               {/* Bottom Right Bracket */}
               <div className="absolute -bottom-2 -right-2 w-6 h-6 border-b-[3px] border-r-[3px] border-primary rounded-br-xl transition-all duration-300 group-hover:-bottom-3 group-hover:-right-3" />
             </div>
+
+            <Link
+              href="/manifesto"
+              className="inline-flex items-center justify-center bg-white text-primary border border-primary px-10 py-3.5 rounded-lg font-sans text-sm font-bold tracking-wider transition-all duration-300 hover:bg-primary/5 hover:shadow-md"
+            >
+              Read the thesis &rarr;
+            </Link>
           </motion.div>
         </div>
       </div>
